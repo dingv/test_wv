@@ -23,7 +23,7 @@ clf_fitted = clf.fit(X_train, y_train)
 clf_fitted.score(X_test, y_test)
 
 '''
-svm
+SVM
 '''
 
 clf = svm.LinearSVC(C=1)
@@ -32,3 +32,8 @@ clf_fitted = clf.fit(X_train, y_train)
 # compute predictive accuracy: output 0.8333
 clf_fitted.score(X_test, y_test)
 
+'''
+partitioning
+'''
+scores = cross_validation.cross_val_score(clf,X,y,cv=5)
+print("Accuracy: %0.2f (+/- %0.2f)" % (scores.mean(), scores.std()*2)
