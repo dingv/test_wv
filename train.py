@@ -43,7 +43,11 @@ print("Accuracy: %0.2f (+/- %0.2f)" % (scores.mean(), scores.std()*2)
 should loop through different Cs to test
 '''
 
-# example
-clf=svm.LinearSVC(C=10)
-scores = cross_validation.cross_val_score(clf,X,y,cv=5)
-print("Accuracy: %0.2f (+/- %0.2f)" % (scores.mean(), scores.std()*2)
+# Cs to test:
+Clist = [10**i for i in range(-5,5)]
+
+# replace C=10 with C value to test
+for i in Clist:
+	clf=svm.LinearSVC(C=i)
+	scores = cross_validation.cross_val_score(clf,X,y,cv=5)
+	print("For C=" + str(i) + ", Accuracy: %0.2f (+/- %0.2f)" % (scores.mean(), scores.std()*2)
