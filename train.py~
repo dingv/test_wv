@@ -33,8 +33,17 @@ clf_fitted = clf.fit(X_train, y_train)
 clf_fitted.score(X_test, y_test)
 
 '''
-partitioning
+cross validation script
 '''
-cross_validation.cross_val_score(clf,X,y,cv=5)
 
+scores = cross_validation.cross_val_score(clf,X,y,cv=5)
+print("Accuracy: %0.2f (+/- %0.2f)" % (scores.mean(), scores.std()*2)
 
+'''
+should loop through different Cs to test
+'''
+
+# example
+clf=svm.LinearSVC(C=10)
+scores = cross_validation.cross_val_score(clf,X,y,cv=5)
+print("Accuracy: %0.2f (+/- %0.2f)" % (scores.mean(), scores.std()*2)
